@@ -2,16 +2,21 @@ import styles from './Sidebar.module.css'
 import profileImg from '../../assets/profile.png'
 import logo from '../../assets/apple.svg'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 
 export default function Sidebar() {
   const [query, setQuery] = useState('')
+  const dispatch = useDispatch()
   const onSearch = () => {
-    if (!query.trim()) return
-    fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${query}`)
-      .then(res => res.json())
-      .then(data => console.log(data))
-      .catch(err => console.error(err))
-  }
+  if (!query.trim()) return
+  fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${query}`)
+    .then(res => res.json())
+    .then(data => dispatch({ 
+      type: 'SET_SEARCH_RESULTS', 
+      payload: { results: data.data, query } 
+    }))
+    .catch(err => console.error(err))
+}
   
   return (
     <aside className={styles.sidebar}>
