@@ -16,26 +16,40 @@ export default function Player() {
     }
   }, [isPlaying, currentTrack])
 
-  if (!currentTrack) return (
-    <div className={styles.player}>
-      <p className={styles.empty}>Seleziona un brano</p>
-    </div>
-  )
-
   return (
     <div className={styles.player}>
-      <audio ref={audioRef} src={currentTrack.preview} autoPlay />
-      <img src={currentTrack.album.cover_small} alt={currentTrack.title} className={styles.cover} />
-      <div className={styles.info}>
-        <p className={styles.title}>{currentTrack.title}</p>
-        <p className={styles.artist}>{currentTrack.artist.name}</p>
+      {currentTrack && <audio ref={audioRef} src={currentTrack.preview} autoPlay />}
+      
+      <div className={styles.controls}>
+        <button className={styles.btn}>⇄</button>
+        <button className={styles.btn}>⏮</button>
+        <button
+          className={styles.playBtn}
+          onClick={() => dispatch({ type: 'TOGGLE_PLAY' })}
+        >
+          {isPlaying ? '⏸' : '▶'}
+        </button>
+        <button className={styles.btn}>⏭</button>
+        <button className={styles.btn}>↻</button>
       </div>
-      <button
-        className={styles.playBtn}
-        onClick={() => dispatch({ type: 'TOGGLE_PLAY' })}
-      >
-        {isPlaying ? '⏸' : '▶️'}
-      </button>
+
+      <div className={styles.trackInfo}>
+        {currentTrack ? (
+          <>
+            <img src={currentTrack.album.cover_small} alt={currentTrack.title} className={styles.cover} />
+            <div className={styles.info}>
+              <p className={styles.title}>{currentTrack.title}</p>
+              <p className={styles.artist}>{currentTrack.artist.name}</p>
+            </div>
+          </>
+        ) : (
+          <p className={styles.empty}>Seleziona un brano</p>
+        )}
+      </div>
+
+      <div className={styles.rightControls}>
+        <button className={styles.btn}>🔉</button>
+      </div>
     </div>
   )
 }
