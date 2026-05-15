@@ -1,0 +1,87 @@
+.sidebar {
+  width: 220px;
+  min-height: 100vh;
+  background-color: #2c2c2e;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.top {
+  padding: 0 16px;
+}
+
+.searchBar {
+  color: #8e8e93;
+  font-size: 14px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.sectionLabel {
+  color: #8e8e93;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin: 16px 0 8px;
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+}
+
+.navItem {
+  color: #ffffff;
+  font-size: 14px;
+  padding: 6px 0;
+  cursor: pointer;
+}
+
+.navItem:hover {
+  color: #fc3c44;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+  border-top: 1px solid #3a3a3c;
+}
+
+.profileImg {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profileName {
+  color: #ffffff;
+  font-size: 13px;
+}
+.sectionLabel {
+  color: #8e8e93;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin: 16px 0 8px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.sectionLabel:hover {
+  color: #ffffff;
+}
+
+.logo {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 24px;
+}
