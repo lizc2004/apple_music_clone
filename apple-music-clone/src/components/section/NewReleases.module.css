@@ -1,0 +1,55 @@
+.section {
+  padding: 20px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.card {
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.card:hover {
+  opacity: 0.8;
+}
+
+.cover {
+  width: 100%;
+  border-radius: 8px;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.trackTitle {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.artist {
+  color: #8e8e93;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.loading {
+  color: #8e8e93;
+  padding: 20px;
+}

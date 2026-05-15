@@ -50,9 +50,18 @@
   }
 }
 
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+body {
+  background-color: #1c1c1e;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+}
+
 
 #root {
   width: 1126px;
