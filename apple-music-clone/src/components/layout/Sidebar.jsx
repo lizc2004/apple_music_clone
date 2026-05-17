@@ -17,6 +17,10 @@ export default function Sidebar() {
     }))
     .catch(err => console.error(err))
 }
+
+const goTo = (page) => {
+  dispatch({ type: 'SET_PAGE', payload: page })
+}
   
   return (
     <aside className={styles.sidebar}>
@@ -44,6 +48,10 @@ export default function Sidebar() {
           <li className={styles.navItem}> Artisti</li>
           <li className={styles.navItem}> Album</li>
           <li className={styles.navItem}> Brani</li>
+        </ul>
+        <p className={styles.sectionLabel}>Playlist</p>
+        <ul className={styles.navList}>
+          <li className={styles.navItem} onClick={() => goTo('favourites')}>☆ Brani preferiti</li>
         </ul>
       </div>
       <div className={styles.profile}>

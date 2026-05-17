@@ -4,10 +4,12 @@ import Sidebar from './components/layout/Sidebar'
 import Player from './components/player/Player'
 import NewReleases from './components/section/NewReleases'
 import SearchResults from './components/section/SearchResults'
+import Favourites from './components/section/Favourites'
 import styles from './App.module.css'
 
 function App() {
   const { results, query } = useSelector(state => state.search)
+  const { currentPage } = useSelector(state => state.ui)
 
   return (
     <div className={styles.app}>
@@ -17,7 +19,10 @@ function App() {
         <main className={styles.mainContent}>
           {results.length > 0 ? (
             <SearchResults results={results} query={query} />
-          ) : (
+          ) : currentPage === 'favourites' ? (
+            <Favourites />
+           ) :
+          (
             <NewReleases />
           )}
         </main>
