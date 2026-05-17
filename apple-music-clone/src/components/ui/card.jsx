@@ -15,17 +15,22 @@ export default function Card({ track, onClick }) {
     }
   }
 
+  const goToArtist = (e) => {
+    e.stopPropagation()
+    dispatch({ type: 'SET_ARTIST', payload: track.artist.id })
+  }
+
   return (
     <div className={styles.card} onClick={() => onClick(track)}>
       <div className={styles.coverWrapper}>
-        <img src={track.album.cover_medium} alt={track.title} className={styles.cover} />
-        <button className={`${styles.starBtn} ${isFavourite ? styles.starActive : ''}`} 
+        <img src={track.album.cover_big} alt={track.title} className={styles.cover} />
+        <button className={`${styles.starBtn} ${isFavourite ? styles.starActive : ''}`}
                 onClick={toggleFavourite}>
           {isFavourite ? '★' : '☆'}
         </button>
       </div>
       <p className={styles.trackTitle}>{track.title}</p>
-      <p className={styles.artist}>{track.artist.name}</p>
+      <p className={styles.artist} onClick={goToArtist}>{track.artist.name}</p>
     </div>
   )
 }
