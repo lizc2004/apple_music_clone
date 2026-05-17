@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux'
+import Card from '../ui/Card'
 import styles from './NewReleases.module.css'
 
 export default function SearchResults({ results, query }) {
@@ -9,15 +10,11 @@ export default function SearchResults({ results, query }) {
       <h2 className={styles.title}>Risultati per "{query}"</h2>
       <div className={styles.grid}>
         {results.map(track => (
-          <div
+          <Card
             key={track.id}
-            className={styles.card}
-            onClick={() => dispatch({ type: 'SET_TRACK', payload: track })}
-          >
-            <img src={track.album.cover_medium} alt={track.title} className={styles.cover} />
-            <p className={styles.trackTitle}>{track.title}</p>
-            <p className={styles.artist}>{track.artist.name}</p>
-          </div>
+            track={track}
+            onClick={(track) => dispatch({ type: 'SET_TRACK', payload: track })}
+          />
         ))}
       </div>
     </section>

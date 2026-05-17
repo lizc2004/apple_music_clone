@@ -1,0 +1,71 @@
+.card {
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.2s;
+  width: 100%;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  opacity: 0.9;
+}
+
+.cover {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  display: block;
+}
+
+.trackTitle {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.artist {
+  color: #8e8e93;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.coverWrapper {
+  position: relative;
+}
+
+.starBtn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0,0,0,0.5);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 0.2s;
+  cursor: pointer;
+  color: #ffffff;
+  line-height: 1;
+  z-index: 10;
+}
+
+.coverWrapper:hover .starBtn {
+  opacity: 1;
+}
+
+.starActive {
+  color: #fc3c44;
+  opacity: 1 !important;
+}
