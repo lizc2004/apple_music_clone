@@ -16,6 +16,7 @@ function formatFans(n) {
 
 export default function ArtistPage() {
   const artistId = useSelector(state => state.ui.artistId)
+  const favourites = useSelector(state => state.favourites.tracks)
   const dispatch = useDispatch()
 
   const [artist, setArtist] = useState(null)
@@ -83,25 +84,45 @@ export default function ArtistPage() {
       <section className={styles.section}>
         <h2 className={styles.sectionTitle}>Top brani</h2>
         <div className={styles.trackList}>
-          {topTracks.map((track, index) => (
-            <div
-              key={track.id}
-              className={styles.trackRow}
-              onClick={() => dispatch({ type: 'SET_TRACK', payload: track })}
-            >
-              <span className={styles.trackNum}>{index + 1}</span>
-              <img
-                src={track.album?.cover_medium}
-                alt={track.title}
-                className={styles.trackThumb}
-              />
-              <div className={styles.trackInfo}>
-                <span className={styles.trackTitle}>{track.title}</span>
-                <span className={styles.trackAlbum}>{track.album?.title}</span>
+          {topTracks.map((track, index) => {
+            const isFavourite = favourites.some(t => t.id === track.id)
+
+            const toggleFavourite = (e) => {
+              e.stopPropagation()
+              if (isFavourite) {
+                dispatch({ type: 'REMOVE_FAVOURITE', payload: track.id })
+              } else {
+                dispatch({ type: 'ADD_FAVOURITE', payload: track })
+              }
+            }
+
+            return (
+              <div
+                key={track.id}
+                className={styles.trackRow}
+                onClick={() => dispatch({ type: 'SET_TRACK', payload: track })}
+              >
+                <span className={styles.trackNum}>{index + 1}</span>
+                <img
+                  src={track.album?.cover_medium}
+                  alt={track.title}
+                  className={styles.trackThumb}
+                />
+                <button
+                  type="button"
+                  className={`${styles.addBtn} ${isFavourite ? styles.starActive : ''}`}
+                  onClick={toggleFavourite}
+                >
+                  {isFavourite ? '✓' : '+'}
+                </button>
+                <div className={styles.trackInfo}>
+                  <span className={styles.trackTitle}>{track.title}</span>
+                  <span className={styles.trackAlbum}>{track.album?.title}</span>
+                </div>
+                <span className={styles.trackDuration}>{formatDuration(track.duration)}</span>
               </div>
-              <span className={styles.trackDuration}>{formatDuration(track.duration)}</span>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </section>
 
